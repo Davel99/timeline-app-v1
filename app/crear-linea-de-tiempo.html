@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de calendario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-dark" data-bs-theme="dark">
+    <header class="container p-3 d-flex">
+        <a href="/crear-linea.html" class="btn btn-outline-primary mx-3">
+            Crear línea de tiempo
+        </a>
+        <a href="/ver-linea-de-tiempo.html" class="btn btn-outline-primary mx-3">
+            Ver línea de tiempo
+        </a>
+    </header>
+    <main class="bg-dark text-white">
+        <div class="container py-5 text-center">
+            <h1>
+                Crear
+                <br>
+                <span class="text-uppercase fw-semibold">Línea de tiempo</span>:
+            </h1>
+            <section id="modifyTimeline" class="container m-0 p-0">
+                <div class="w-100">
+                    <a class="btn btn-outline-warning w-100" data-bs-toggle="collapse" href="#modifyMenu" role="button"
+                        aria-expanded="false" aria-controls="modifyMenu">
+                        ¿Quieres modificar una línea existente?
+                    </a>
+                </div>
+                <div class="collapse" id="modifyMenu">
+                    <div class="card card-body bg-warning">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="timelineModCode" placeholder="Tu código">
+                            <label for="timelineModCode">Código de tu línea de tiempo:</label>
+                        </div>
+                        <div class="container">
+                            <button class="btn btn-secondary w-100" id="generateTimelineBTN">
+                                VER LÍNEA DE 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <section id="createTimeline" class="container">
+                <div class="col col-lg-1"></div>
+                <div class="row">
+                    <div class="col-md-auto border border-secondary rounded p-3 text-secondary">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="timelineName" placeholder="Terrícola">
+                            <label for="timelineName">Nombre de la línea de tiempo</label>
+                        </div>
+
+                        <div class="mb-3 border-bottom border-top border-secondary">
+                            <label class="form-label row ms-auto">Identificador de tu línea</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon3">Línea de</span>
+                                <input type="text" class="form-control" id="subname" placeholder="El Protagonista">
+                            </div>
+                            <div class="form-text text-secondary text-start">El identificador ayuda a separar los
+                                eventos de tu
+                                línea de tiempo por personajes</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <span class="h5 fw-semibold">Eventos de esta línea:</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary w-100" id="addEventBTN">Añadir evento</button>
+                                </div>
+                            </div>
+
+                            <section id="eventDataArea" class="p-3">
+                            </section>
+
+                        </div>
+                        <div class="container">
+                            <button class="btn btn-success btn-lg w-100" id="saveTimelineBTN">
+                                Guardar
+                                línea de tiempo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-lg-1"></div>
+
+                <div class="container p-5">
+                    <div class="py-3">
+                        <span class="h3">
+                            Código de tu línea de tiempo:
+                        </span>
+                        <br>
+                    </div>
+
+                    <input type="text" class="form-control" id="timelineCode"
+                        placeholder="Código generado al darle click en Guardar">
+                    <br>
+                    <small class="text-secondary">
+                        El código contiene la información de tu línea de tiempo y servirá para leerlo en el futuro.
+                        Yo no almaceno
+                        nada sobre ti o sobre lo que haces, por lo que es tu responsabilidad guardar tus creaciones.
+                    </small>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
