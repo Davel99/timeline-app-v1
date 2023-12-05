@@ -1,9 +1,9 @@
-export default class TimelineCreation{
+export default class TimelineCreationTEMPLATE{
     constructor(){
         // this.eventCount = 0;
     }
 
-    printEventForm(eventCount){
+    getEventForm(eventCount){
         return `
         <div class="border border-secondary rounded p-3" id="event${eventCount}">
             <div class="row justify-content-center mb-1">
@@ -49,7 +49,7 @@ export default class TimelineCreation{
     }
 
     printSingleEvent(event, counter){
-        let html = `
+    return `
         <div class="border border-secondary rounded p-3" id="event${counter}">
             <div class="row justify-content-center mb-1">
                 <div class="col-md-6">

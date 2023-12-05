@@ -1,8 +1,6 @@
 import './style.css';
 import CONTROLLER from './JSModules/CONTROLLER';
+import VIEW from './JSModules/VIEW';
 
-new CONTROLLER();
-
-let yearSpan = document.querySelector('#yearSpan');
-let year = new Date().getFullYear();
-yearSpan.innerHTML = year;
+let view = new VIEW();
+new CONTROLLER(view);
