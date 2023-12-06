@@ -10,33 +10,51 @@ export default class CONTROLLER {
         };
         this.VIEW = V;
         this.eventCount = 0;
+        this.timelinesCount = 0;
         this.eventCount = this.VIEW.printNewEventForm(this.eventCount);
-
+        this.timelinesCount = this.VIEW.printTimelineCodeArea(this.timelinesCount);
         this.DOMevents();
-        
+
     }
     DOMevents() {
-        this.VIEW.HTML.TimelineCreation.BTN.addEvent.addEventListener('click', () => {
-            this.eventCount = this.VIEW.printNewEventForm(this.eventCount); 
-        });
-        this.VIEW.HTML.TimelineCreation.BTN.saveTimeline.addEventListener('click', () => {
-            this.saveTimeline();
-        });
-
-        this.VIEW.HTML.TimelineCreation.BTN.generateTimeline.addEventListener('click', () => {
-            let code = this.VIEW.getInput('timelineModCode');
-            if (!code) {
-                alert('Algo salió mal');
-            } else {
-                this.TimelineCREATED = new FictionalTimeline(code);
-                let newCount = this.VIEW.updateFromValues(
-                    this.TimelineCREATED.name,
-                    this.TimelineCREATED.subname,
-                    this.TimelineCREATED.events
-                );
-                this.eventCount = newCount;
+        //TIMELINE CREATION EVENTS
+        if (this.VIEW.checkBTN('addEvent')) {
+            this.VIEW.checkBTN('addEvent').addEventListener('click', () => {
+                this.eventCount = this.VIEW.printNewEventForm(this.eventCount);
+            });
+        }
+        if (this.VIEW.checkBTN('saveTimeline')) {
+            this.VIEW.checkBTN('saveTimeline').addEventListener('click', () => {
+                this.saveTimeline();
+            });
+        }
+        if (this.VIEW.checkBTN('generateTimelineCode')) {
+            this.VIEW.checkBTN('generateTimelineCode').addEventListener('click', () => {
+                let code = this.VIEW.getInput('timelineModCode');
+                if (!code) {
+                    alert('Algo salió mal');
+                } else {
+                    this.TimelineCREATED = new FictionalTimeline(code);
+                    let newCount = this.VIEW.updateFromValues(
+                        this.TimelineCREATED.name,
+                        this.TimelineCREATED.subname,
+                        this.TimelineCREATED.events
+                    );
+                    this.eventCount = newCount;
+                }
+            });
+            //TIMELINE WATCH EVENTS
+            if (this.VIEW.checkBTN('addTimeline')) {
+                this.VIEW.checkBTN('addTimeline').addEventListener('click', () => {
+                    this.timelinesCount = this.VIEW.printTimelineCodeArea(this.timelinesCount);
+                });
             }
-        });
+            if (this.VIEW.checkBTN('generateTimeline')) {
+                this.VIEW.checkBTN('generateTimeline').addEventListener('click', () => {
+                    // this.handleCreation();
+                })
+            }
+        }
     }
 
     saveTimeline() {
@@ -44,7 +62,7 @@ export default class CONTROLLER {
         this.TimelineCREATED.name = this.VIEW.getInput('timelineName');
         this.TimelineCREATED.subname = this.VIEW.getInput('timelineSubname');
 
-        console.log('EVENTS COUNT'+ this.eventCount);
+        console.log('EVENTS COUNT' + this.eventCount);
 
         let events = new Array(this.eventCount);
         for (let i = 0; i < this.eventCount; i++) {
@@ -59,6 +77,77 @@ export default class CONTROLLER {
         }
 
         this.TimelineCREATED.events = events;
-        this.VIEW.updateInput('timelineCode',  this.TimelineCREATED.dataToString());
+        this.VIEW.updateInput('timelineCode', this.TimelineCREATED.dataToString());
+    }
+
+    handleWatch() {
+        this.timelines = new Array(this.timelinesCount);
+        this.allEventsCount = 0;
+        for (let i = 0; i < this.timelinesCount; i++) {
+            let fictionalTimeline = document.querySelector('#timeline' + i);
+            let code = fictionalTimeline.value;
+            this.timelines[i] = new FictionalTimeline(code);
+            this.allEventsCount += this.timelines[i].events.length;
+        }
+
+        console.log("All events count: " + this.allEventsCount);
+
+        this.allEvents = new Array(this.allEventsCount);
+        let helper = 0;
+        for (let i = 0; i < this.timelinesCount; i++) {
+            for (let e = 0; e < this.timelines[i].events.length; e++) {
+                this.allEvents[helper] = this.timelines[i].events[e];
+                this.allEvents[helper].id = i;
+                helper++;
+            }
+        }
+        console.log(this.allEvents);
+        this.orderEvents();
+        this.printTimelineName();
+        this.printTimelineHeaders();
+
+        this.allEvents.forEach(event => {
+            console.log(event);
+            this.printEvents(event);
+        })
+    }
+
+
+    orderEvents() {
+        this.allEvents.sort((a, b) => this.sortEvent(a, b));
+        console.log("Sorted events:");
+        console.log(this.allEvents);
+    }
+    compare(a, b, attr) {
+        if (a[attr] < b[attr])
+            return -1;
+        if (a[attr] > b[attr])
+            return 1;
+    }
+    sortEvent(a, b) {
+        if (a['year'] < b['year'])
+            return -1;
+        if (a['year'] > b['year'])
+            return 1;
+
+        if (a['month'] < b['month'])
+            return -1;
+        if (a['month'] > b['month'])
+            return 1;
+
+        if (a['day'] < b['day'])
+            return -1;
+        if (a['day'] > b['day'])
+            return 1;
+
+        if (a['hour'] < b['hour'])
+            return -1;
+        if (a['hour'] > b['hour'])
+            return 1;
+
+        if (a['min'] < b['min'])
+            return -1;
+        if (a['min'] > b['min'])
+            return 1;
     }
 }
