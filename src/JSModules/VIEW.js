@@ -81,8 +81,9 @@ export default class VIEW {
     }
 
     updateFromValues(name, subname, events) {
-        this.HTML.TimelineCreation.INPUT.timelineName.value = name;
-        this.HTML.TimelineCreation.INPUT.timelineSubname.value = subname;
+        this.updateInput('timelineName', name);
+        this.updateInput('timelineSubname', subname);
+        this.updateInput('timelineCode', '');
         let eventCount = events.length;
         this.HTML.TimelineCreation.AREA.events.innerHTML = "";
         events.forEach((event, index) => {
