@@ -11,8 +11,9 @@ export default class CONTROLLER {
         this.VIEW = V;
         this.eventCount = 0;
         this.timelinesCount = 0;
-        this.eventCount = this.VIEW.printNewEventForm(this.eventCount);
-        this.timelinesCount = this.VIEW.printTimelineCodeArea(this.timelinesCount);
+        this.allEventsCount = 0;
+        if (this.VIEW.checkPage('create')) this.eventCount = this.VIEW.printNewEventForm(this.eventCount);
+        else if (this.VIEW.checkPage('watch')) this.timelinesCount = this.VIEW.printTimelineCodeArea(this.timelinesCount);
         this.DOMevents();
 
     }
@@ -43,17 +44,17 @@ export default class CONTROLLER {
                     this.eventCount = newCount;
                 }
             });
-            //TIMELINE WATCH EVENTS
-            if (this.VIEW.checkBTN('addTimeline')) {
-                this.VIEW.checkBTN('addTimeline').addEventListener('click', () => {
-                    this.timelinesCount = this.VIEW.printTimelineCodeArea(this.timelinesCount);
-                });
-            }
-            if (this.VIEW.checkBTN('generateTimeline')) {
-                this.VIEW.checkBTN('generateTimeline').addEventListener('click', () => {
-                    // this.handleCreation();
-                })
-            }
+        }
+        //TIMELINE WATCH EVENTS
+        if (this.VIEW.checkBTN('addTimeline')) {
+            this.VIEW.checkBTN('addTimeline').addEventListener('click', () => {
+                this.timelinesCount = this.VIEW.printTimelineCodeArea(this.timelinesCount);
+            });
+        }
+        if (this.VIEW.checkBTN('generateTimeline')) {
+            this.VIEW.checkBTN('generateTimeline').addEventListener('click', () => {
+                this.handleWatch();
+            })
         }
     }
 
@@ -81,6 +82,7 @@ export default class CONTROLLER {
     }
 
     handleWatch() {
+        this.VIEW.clearWatchingArea();
         this.timelines = new Array(this.timelinesCount);
         this.allEventsCount = 0;
         for (let i = 0; i < this.timelinesCount; i++) {
@@ -89,7 +91,6 @@ export default class CONTROLLER {
             this.timelines[i] = new FictionalTimeline(code);
             this.allEventsCount += this.timelines[i].events.length;
         }
-
         console.log("All events count: " + this.allEventsCount);
 
         this.allEvents = new Array(this.allEventsCount);
@@ -103,15 +104,13 @@ export default class CONTROLLER {
         }
         console.log(this.allEvents);
         this.orderEvents();
-        this.printTimelineName();
-        this.printTimelineHeaders();
+        this.VIEW.printTimeline(this.timelines[0]);
 
         this.allEvents.forEach(event => {
             console.log(event);
-            this.printEvents(event);
+            this.VIEW.printEventsWatcher(event, this.timelinesCount);
         })
     }
-
 
     orderEvents() {
         this.allEvents.sort((a, b) => this.sortEvent(a, b));

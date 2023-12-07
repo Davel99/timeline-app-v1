@@ -34,39 +34,6 @@ export default class TimelineWatchTEMPLATE{
         })
     }
 
-    
-    // handleCreation(timelinesCount, allEventsCount) {
-    //     this.timelines = new Array(this.timelinesCount);
-    //     this.allEventsCount = 0;
-    //     for (let i = 0; i < this.timelinesCount; i++) {
-    //         let fictionalTimeline = document.querySelector('#timeline' + i);
-    //         let code = fictionalTimeline.value;
-    //         this.timelines[i] = new FictionalTimeline(code);
-    //         this.allEventsCount += this.timelines[i].events.length;
-    //     }
-
-    //     console.log("All events count: " + this.allEventsCount);
-
-    //     this.allEvents = new Array(this.allEventsCount);
-    //     let helper = 0;
-    //     for (let i = 0; i < this.timelinesCount; i++) {
-    //         for (let e = 0; e < this.timelines[i].events.length; e++) {
-    //             this.allEvents[helper] = this.timelines[i].events[e];
-    //             this.allEvents[helper].id = i;
-    //             helper++;
-    //         }
-    //     }
-    //     console.log(this.allEvents);
-    //     this.orderEvents();
-    //     this.printTimelineName();
-    //     this.printTimelineHeaders();
-
-    //     this.allEvents.forEach(event => {
-    //         console.log(event);
-    //         this.printEvents(event);
-    //     })
-    // }
-
     getTimelineCodeArea(timelinesCount) {
         return `
         <div class="form-floating mb-3">
@@ -76,23 +43,22 @@ export default class TimelineWatchTEMPLATE{
         `;
     }
 
-    printTimelineName() {
-        let html = `
-            <span class="h4 font-monospace text-decoration-underline">${this.timelines[0].name}</span>
+    getTimelineNameHTML(name) {
+        return `
+            <span class="h4 font-monospace text-decoration-underline">${name}</span>
         `;
-        this.timelineNameArea.innerHTML = html;
     }
 
-    printTimelineHeaders() {
+    getTimelineHeadersHTML(timelines) {
         // let headers = new Array(this.timelinesCount);
         let headers = '';
-        for (let i = 0; i < this.timelinesCount; i++) {
+        for (let i = 0; i < timelines.length; i++) {
             headers += `
             <div class="col-sm-10 col-md-8 col-lg-4">
                 <span class="fw-semibold">Línea de</span>
                 <br>
                 <span class="h4 fw-bold text-uppercase">
-                    ${this.timelines[i].subname}
+                    ${timelines[i].subname}
                 </span>
             </div>
             `;
@@ -102,13 +68,12 @@ export default class TimelineWatchTEMPLATE{
                 ${headers}        
             </div>
         `;
-
-        this.eventsArea.insertAdjacentHTML('beforeend', html);
+        return headers;
     }
 
-    printEvents(event) {
+    getEventHTML(event, timelinesCount) {
         let eventCols = '';
-        for (let i = 0; i < this.timelinesCount; i++) {
+        for (let i = 0; i < timelinesCount; i++) {
             eventCols += `
             <div class="col-sm-10 col-md-8 col-lg-4">
             `;
@@ -152,58 +117,6 @@ export default class TimelineWatchTEMPLATE{
             </div>
         `;
 
-        this.eventsArea.insertAdjacentHTML('beforeend', html);
-
-    }
-
-    orderEvents() {
-        // this.allEvents.sort((a, b) => this.compare(a, b, 'year'));
-        // this.allEvents.sort((a, b) => this.compare(a, b, 'month'));
-        // this.allEvents.sort((a, b) => this.compare(a, b, 'day'));
-        // this.allEvents.sort((a, b) => this.compare(a, b, 'hour'));
-        // this.allEvents.sort((a, b) => this.compare(a, b, 'min'));
-        // this.allEvents = this.allEvents.sort((a, b) => this.compare(a, b, 'year'));
-        // this.allEvents = this.allEvents.sort((a, b) => this.compare(a, b, 'month'));
-        // this.allEvents = this.allEvents.sort((a, b) => this.compare(a, b, 'day'));
-        // this.allEvents = this.allEvents.sort((a, b) => this.compare(a, b, 'hour'));
-        // this.allEvents = this.allEvents.sort((a, b) => this.compare(a, b, 'min'));
-        this.allEvents.sort((a,b) => this.sortEvent(a,b));
-        console.log("Sorted events:");
-        console.log(this.allEvents);
-    }
-
-    compare(a, b, attr) {
-        if (a[attr] < b[attr])
-            return -1;
-        if (a[attr] > b[attr])
-            return 1;
-    }
-
-    sortEvent(a,b){
-        if (a['year'] < b['year'])
-            return -1;
-        if (a['year'] > b['year'])
-            return 1;
-
-        if (a['month'] < b['month'])
-            return -1;
-        if (a['month'] > b['month'])
-            return 1;
-
-        if (a['day'] < b['day'])
-            return -1;
-        if (a['day'] > b['day'])
-            return 1;
-
-        if (a['hour'] < b['hour'])
-            return -1;
-        if (a['hour'] > b['hour'])
-            return 1;
-
-        if (a['min'] < b['min'])
-            return -1;
-        if (a['min'] > b['min'])
-            return 1;
-        
+        return html;
     }
 }

@@ -24,7 +24,7 @@ export default class VIEW {
         //TIMELINE CREATION
         this.HTML.TimelineCreation.BTN.addEvent = document.querySelector('#addEventBTN');
         this.HTML.TimelineCreation.BTN.saveTimeline = document.querySelector('#saveTimelineBTN');
-        this.HTML.TimelineCreation.BTN.generateTimelineCode = document.querySelector('#generateTimelineBTN');
+        this.HTML.TimelineCreation.BTN.generateTimelineCode = document.querySelector('#generateTimelineFromCodeBTN');
         this.HTML.TimelineCreation.AREA.events = document.querySelector('#eventDataArea');
         this.HTML.TimelineCreation.INPUT.timelineCode = document.querySelector('#timelineCode');
         this.HTML.TimelineCreation.INPUT.timelineModCode = document.querySelector('#timelineModCode');
@@ -34,8 +34,8 @@ export default class VIEW {
         //TIMELINE WATCH
         this.HTML.TimelineWatch.BTN.addTimeline = document.querySelector('#addTimelineBTN');
         this.HTML.TimelineWatch.BTN.generateTimeline = document.querySelector('#generateTimelineBTN');
-        this.HTML.TimelineWatch.AREA.timelineNameArea = document.querySelector('#timelineNameArea');
-        this.HTML.TimelineWatch.AREA.timelineCodes = document.querySelector('#timelinesCodes');
+        this.HTML.TimelineWatch.AREA.timelineName = document.querySelector('#timelineNameArea');
+        this.HTML.TimelineWatch.AREA.timelinesAllCodes = document.querySelector('#timelinesCodes');
         this.HTML.TimelineWatch.AREA.eventSection = document.querySelector('#eventsArea');
 
         //FOOTER
@@ -55,10 +55,29 @@ export default class VIEW {
     printTimelineCodeArea(timelinesCount) {
         if (this.HTML.TimelineWatch.AREA.eventSection) {
             let html = this.TEMPLATE.TimelineWatch.getTimelineCodeArea(timelinesCount);
-            this.HTML.TimelineWatch.AREA.timelineCodes.insertAdjacentHTML('beforeend', html);
+            this.HTML.TimelineWatch.AREA.timelinesAllCodes.insertAdjacentHTML('beforeend', html);
             return ++timelinesCount;
         }
         return false;
+    }
+
+    clearWatchingArea(){
+        this.HTML.TimelineWatch.AREA.eventSection.innerHTML = '';
+    }
+
+    printTimeline(timelineClass){
+        let name = timelineClass.name;
+        let nameHTML = this.TEMPLATE.TimelineWatch.getTimelineNameHTML(name);
+        this.HTML.TimelineWatch.AREA.timelineName.innerHTML = nameHTML;
+        let headersHTML = this.TEMPLATE.TimelineWatch.getTimelineHeadersHTML(timelineClass);
+        this.HTML.TimelineWatch.AREA.eventSection.insertAdjacentHTML('beforeend', headersHTML);
+        return true;
+    }
+
+    printEventsWatcher(event, timelinesCount){
+        let html = this.TEMPLATE.TimelineWatch.getEventHTML(event, timelinesCount);
+        this.HTML.TimelineWatch.AREA.eventSection.insertAdjacentHTML('beforeend', html);
+        return true;
     }
 
     updateFromValues(name, subname, events) {
@@ -74,10 +93,10 @@ export default class VIEW {
     }
 
     getInput = (inputName) => {
-        if (inputName == 'timelineCode') return this.HTML.TimelineCreation.INPUT.timelineCode.value;
-        if (inputName == 'timelineModCode') return this.HTML.TimelineCreation.INPUT.timelineModCode.value;
-        if (inputName == 'timelineName') return this.HTML.TimelineCreation.INPUT.timelineName.value;
-        if (inputName == 'timelineSubname') return this.HTML.TimelineCreation.INPUT.timelineSubname.value;
+        if (inputName == 'timelineCode') return this.HTML.TimelineCreation.INPUT.timelineCode ? this.HTML.TimelineCreation.INPUT.timelineCode.value : false;
+        if (inputName == 'timelineModCode') return this.HTML.TimelineCreation.INPUT.timelineModCode ? this.HTML.TimelineCreation.INPUT.timelineModCode.value : false;
+        if (inputName == 'timelineName') return this.HTML.TimelineCreation.INPUT.timelineName ? this.HTML.TimelineCreation.INPUT.timelineName.value : false;
+        if (inputName == 'timelineSubname') return this.HTML.TimelineCreation.INPUT.timelineSubname ? this.HTML.TimelineCreation.INPUT.timelineSubname.value : false;
         return false;
     }
     updateInput = (inputName, value) => {
@@ -95,6 +114,11 @@ export default class VIEW {
         if (name == 'addTimeline') return this.HTML.TimelineWatch.BTN.addTimeline;
         if (name == 'generateTimeline') return this.HTML.TimelineWatch.BTN.generateTimeline;
         return false;
+    }
+
+    checkPage = (name) => {
+        if(name === 'create') return this.HTML.TimelineCreation.AREA.events ? true : false;
+        if(name === 'watch') return this.HTML.TimelineWatch.AREA.timelinesAllCodes ? true : false;
     }
 
 }
