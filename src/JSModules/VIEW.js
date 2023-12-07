@@ -81,11 +81,11 @@ export default class VIEW {
     }
 
     updateFromValues(name, subname, events) {
-        this.HTML.TimelineCreation.INPUT.timelineName.value = this.TimelineCREATED.name;
-        this.HTML.TimelineCreation.INPUT.timelineSubname.value = this.TimelineCREATED.subname;
+        this.HTML.TimelineCreation.INPUT.timelineName.value = name;
+        this.HTML.TimelineCreation.INPUT.timelineSubname.value = subname;
         let eventCount = events.length;
         this.HTML.TimelineCreation.AREA.events.innerHTML = "";
-        this.TimelineCREATED.events.forEach((event, index) => {
+        events.forEach((event, index) => {
             let html = this.TEMPLATE.TimelineCreation.printSingleEvent(event, index);
             this.HTML.TimelineCreation.AREA.events.insertAdjacentHTML('beforeend', html);
         });

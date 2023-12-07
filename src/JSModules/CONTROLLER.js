@@ -3,11 +3,6 @@ import FictionalTimeline from "./FictionalTimeline";
 
 export default class CONTROLLER {
     constructor(V = new VIEW()) {
-        this.TimelineCreation = {
-            BTN: {},
-            AREA: {},
-            INPUT: {}
-        };
         this.VIEW = V;
         this.eventCount = 0;
         this.timelinesCount = 0;
@@ -36,6 +31,7 @@ export default class CONTROLLER {
                     alert('Algo salió mal');
                 } else {
                     this.TimelineCREATED = new FictionalTimeline(code);
+                    console.log(this.TimelineCREATED);
                     let newCount = this.VIEW.updateFromValues(
                         this.TimelineCREATED.name,
                         this.TimelineCREATED.subname,
