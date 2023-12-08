@@ -50,9 +50,6 @@ export default class TimelineWatchTEMPLATE{
     }
 
     getTimelineHeadersHTML(timelines) {
-        // let headers = new Array(this.timelinesCount);
-        console.log('TIMELINES: ');
-        console.log(timelines);
         let headers = '';
         for (let i = 0; i < timelines.length; i++) {
             headers += `

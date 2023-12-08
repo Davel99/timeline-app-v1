@@ -59,8 +59,6 @@ export default class CONTROLLER {
         this.TimelineCREATED.name = this.VIEW.getInput('timelineName');
         this.TimelineCREATED.subname = this.VIEW.getInput('timelineSubname');
 
-        console.log('EVENTS COUNT' + this.eventCount);
-
         let events = new Array(this.eventCount);
         for (let i = 0; i < this.eventCount; i++) {
             events[i] = {};
@@ -87,7 +85,6 @@ export default class CONTROLLER {
             this.timelines[i] = new FictionalTimeline(code);
             this.allEventsCount += this.timelines[i].events.length;
         }
-        console.log("All events count: " + this.allEventsCount);
 
         this.allEvents = new Array(this.allEventsCount);
         let helper = 0;
@@ -98,26 +95,16 @@ export default class CONTROLLER {
                 helper++;
             }
         }
-        console.log(this.allEvents);
         this.orderEvents();
         this.VIEW.printTimeline(this.timelines);
 
         this.allEvents.forEach(event => {
-            console.log(event);
             this.VIEW.printEventsWatcher(event, this.timelinesCount);
         })
     }
 
     orderEvents() {
         this.allEvents.sort((a, b) => this.sortEvent(a, b));
-        console.log("Sorted events:");
-        console.log(this.allEvents);
-    }
-    compare(a, b, attr) {
-        if (a[attr] < b[attr])
-            return -1;
-        if (a[attr] > b[attr])
-            return 1;
     }
     sortEvent(a, b) {
         if (a['year'] < b['year'])
