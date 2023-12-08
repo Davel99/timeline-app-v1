@@ -66,10 +66,12 @@ export default class VIEW {
     }
 
     printTimeline(timelineClass){
-        let name = timelineClass.name;
+        let name = timelineClass[0].name;
         let nameHTML = this.TEMPLATE.TimelineWatch.getTimelineNameHTML(name);
         this.HTML.TimelineWatch.AREA.timelineName.innerHTML = nameHTML;
         let headersHTML = this.TEMPLATE.TimelineWatch.getTimelineHeadersHTML(timelineClass);
+        console.log('HEADERS CREATED');
+        console.log(headersHTML);
         this.HTML.TimelineWatch.AREA.eventSection.insertAdjacentHTML('beforeend', headersHTML);
         return true;
     }

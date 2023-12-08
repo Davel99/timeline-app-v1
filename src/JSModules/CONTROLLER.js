@@ -100,7 +100,7 @@ export default class CONTROLLER {
         }
         console.log(this.allEvents);
         this.orderEvents();
-        this.VIEW.printTimeline(this.timelines[0]);
+        this.VIEW.printTimeline(this.timelines);
 
         this.allEvents.forEach(event => {
             console.log(event);
