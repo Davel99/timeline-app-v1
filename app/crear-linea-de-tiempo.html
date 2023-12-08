@@ -5,19 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prueba de calendario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-dark" data-bs-theme="dark">
-    <header class="container p-3 d-flex">
-        <a href="/crear-linea.html" class="btn btn-outline-primary mx-3">
-            Crear línea de tiempo
-        </a>
-        <a href="/ver-linea-de-tiempo.html" class="btn btn-outline-primary mx-3">
-            Ver línea de tiempo
-        </a>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
+            <div class="container-fluid">
+                <a class="navbar-brand letras-brand" href="./index.html">TEMPUS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active btn btn-primary mx-3">
+                            <a class="nav-link" href="./crear-linea-de-tiempo.html">CREAR</a>
+                        </li>
+                        <li class="nav-item active btn btn-primary mx-3">
+                            <a class="nav-link" href="./ver-linea-de-tiempo.html">OBSERVAR</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text letras-navbar-text">
+                        Hecho por <b>Davel Gomoz</b>
+                    </span>
+                </div>
+            </div>
+        </nav>
     </header>
     <main class="bg-dark text-white">
         <div class="container py-5 text-center">
@@ -30,18 +49,22 @@
                 <div class="w-100">
                     <a class="btn btn-outline-warning w-100" data-bs-toggle="collapse" href="#modifyMenu" role="button"
                         aria-expanded="false" aria-controls="modifyMenu">
-                        ¿Quieres modificar una línea existente?
+                        <i class="fa-solid fa-pencil"></i>
+                        <span class="ms-1">
+                            Modificar una línea existente
+                        </span>
                     </a>
                 </div>
                 <div class="collapse" id="modifyMenu">
-                    <div class="card card-body bg-warning">
+                    <div class="card card-body border border-warning">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="timelineModCode" placeholder="Tu código">
                             <label for="timelineModCode">Código de tu línea de tiempo:</label>
                         </div>
                         <div class="container">
                             <button class="btn btn-secondary w-100" id="generateTimelineFromCodeBTN">
-                                VER LÍNEA DE TIEMPO
+                                <i class="fa-solid fa-eye"></i>
+                                <span class="ms-1">Ver línea de tiempo</span>
                             </button>
                         </div>
                     </div>
@@ -74,7 +97,10 @@
                                     <span class="h5 fw-semibold">Eventos de esta línea:</span>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-primary w-100" id="addEventBTN">Añadir evento</button>
+                                    <button class="btn btn-primary w-100" id="addEventBTN">
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                        <span class="ms-1">Añadir evento</span>
+                                    </button>
                                 </div>
                             </div>
 
@@ -84,8 +110,11 @@
                         </div>
                         <div class="container">
                             <button class="btn btn-success btn-lg w-100" id="saveTimelineBTN">
-                                Guardar
-                                línea de tiempo
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <span class="ms-1">
+                                    Guardar
+                                    línea de tiempo
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -93,16 +122,23 @@
                 <div class="col col-lg-1"></div>
 
                 <div class="container p-5">
-                    <div class="py-3">
+                    <div class="py-1">
                         <span class="h3">
                             Código de tu línea de tiempo:
                         </span>
                         <br>
                     </div>
-
-                    <input type="text" class="form-control" id="timelineCode"
-                        placeholder="Código generado al darle click en Guardar">
                     <br>
+                    <div class="input-group mb-3 input-group-lg">
+                        <span class="input-group-text" id="copyCodeBtn" type="button">
+                            <i class="fa-solid fa-copy"></i>
+                        </span>
+                        <input type="text" class="form-control" id="timelineCode"
+                            placeholder="Código de la línea de tiempo" 
+                            aria-label="Código de la línea de tiempo"
+                            aria-describedby="Código de la línea de tiempo">
+                    </div>
+
                     <small class="text-secondary">
                         El código contiene la información de tu línea de tiempo y servirá para leerlo en el futuro.
                         Yo no almaceno
