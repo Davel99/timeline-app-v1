@@ -41,7 +41,7 @@ export default class VIEW {
         //FOOTER
         this.FOOTER.yearSpan = document.querySelector('#yearSpan') ? document.querySelector('#yearSpan') : false;
         this.INFO.year = new Date().getFullYear();
-        if (this.FOOTER.yearSpan) this.FOOTER.yearSpan.innerHTML = year;
+        if (this.FOOTER.yearSpan) this.FOOTER.yearSpan.innerHTML = this.INFO.year;
     }
 
     printNewEventForm(eventCount) {
