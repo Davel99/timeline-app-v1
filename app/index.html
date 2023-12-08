@@ -1,31 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prueba de calendario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-dark" data-bs-theme="dark">
-    <header class="container p-3 d-flex">
-        <a href="./index.html" class="btn btn-outline-primary mx-3">
-            INICIO
-        </a>
-        <a href="./crear-linea-de-tiempo.html" class="btn btn-outline-primary mx-3">
-            Crear línea de tiempo
-        </a>
-        <a href="./ver-linea-de-tiempo.html" class="btn btn-outline-primary mx-3">
-            Ver línea de tiempo
-        </a>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
+            <div class="container-fluid">
+                <a class="navbar-brand letras-brand" href="./index.html">TEMPUS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mx-auto">
+                        <!-- <li class="nav-item active btn btn-primary mx-3">
+                            <a class="nav-link" href="./crear-linea-de-tiempo.html">CREAR</a>
+                        </li>
+                        <li class="nav-item active btn btn-primary mx-3">
+                            <a class="nav-link" href="./ver-linea-de-tiempo.html">OBSERVAR</a>
+                        </li> -->
+                    </ul>
+                    <span class="navbar-text letras-navbar-text">
+                        Hecho por <b>Davel Gomoz</b>
+                    </span>
+                </div>
+            </div>
+        </nav>
     </header>
-    <main class="bg-dark text-white">
-        
+
+    <main class="container d-flex">
+        <div class="mx-auto px-5 w-100">
+            <div class="row mt-5">
+                <a href="./crear-linea-de-tiempo.html" class="btn btn-primary my-3">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span class="ms-1">Crear línea de tiempo</span>
+                </a>
+            </div>
+            <div class="row mb-5">
+                <a href="./ver-linea-de-tiempo.html" class="btn btn-primary my-3">
+                    <i class="fa-solid fa-eye"></i>
+                    <span class="ms-1">Ver línea de tiempo</span>
+                </a>
+            </div>
+
+        </div>
+
+
 
     </main>
+
+    <footer class="">
+        <div class="container">
+            <div class="row text-secondary">
+                <p class="col-sm-12">
+                    ¡Hola! Programé esta aplicación para que me ayudase a trabajar con mis novelas. ¿Tienes alguna idea
+                    para mejorar este pequeño proyecto?
+                    Envía un correo explicándomela a:
+                </p>
+                <small class="col-sm-12 text-center">
+                    <span role="button" class="border rounded border-secondary py-1 px-3 bg-dark text-white"
+                        title="Copiar correo" onclick="{ navigator.clipboard.writeText('sugerencias@davelgomoz.com')}">
+                        <b>sugerencias@davelgomoz.com</b>
+                        <i class="fa-regular fa-clipboard ps-1"></i>
+                    </span>
+                </small>
+                <small class="text-muted text-center pt-2 pb-3">(Solo dale click al correo para copiarlo
+                    automáticamente)</small>
+            </div>
+
+        </div>
+
+        <div class="row text-white text-center pt-5 pb-3 border-top border-secondary">
+            <div class="col-sm-12 col-md-4">
+                <b>Davel Gomoz</b> &COPY; <span id="yearSpan"></span>
+            </div>
+            <div class="col-sm-12 col-md-8">
+                ¡Me ayudarías mucho siguiéndome en mis redes sociales!
+                <div class="gral-icon-container">
+                    <a href="https://youtube.com/DavelGomoz" target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://facebook.com/DavelGomoz" target="_blank">
+                        <i class="fa-brands fa-square-facebook"></i>
+                    </a>
+                    <a href="https://tiktok.com/@DavelGomoz" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
