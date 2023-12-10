@@ -25,6 +25,7 @@ export default class VIEW {
         this.HTML.TimelineCreation.BTN.addEvent = document.querySelector('#addEventBTN');
         this.HTML.TimelineCreation.BTN.saveTimeline = document.querySelector('#saveTimelineBTN');
         this.HTML.TimelineCreation.BTN.generateTimelineCode = document.querySelector('#generateTimelineFromCodeBTN');
+        this.HTML.TimelineCreation.BTN.copyCode = document.querySelector('#copyCodeBtn');
         this.HTML.TimelineCreation.AREA.events = document.querySelector('#eventDataArea');
         this.HTML.TimelineCreation.INPUT.timelineCode = document.querySelector('#timelineCode');
         this.HTML.TimelineCreation.INPUT.timelineModCode = document.querySelector('#timelineModCode');
@@ -110,10 +111,11 @@ export default class VIEW {
 
     checkBTN = (name) => {
         if (name == 'addEvent') return this.HTML.TimelineCreation.BTN.addEvent;
-        if (name == 'saveTimeline') return this.HTML.TimelineCreation.BTN.saveTimeline;
-        if (name == 'generateTimelineCode') return this.HTML.TimelineCreation.BTN.generateTimelineCode;
-        if (name == 'addTimeline') return this.HTML.TimelineWatch.BTN.addTimeline;
-        if (name == 'generateTimeline') return this.HTML.TimelineWatch.BTN.generateTimeline;
+        else if (name == 'saveTimeline') return this.HTML.TimelineCreation.BTN.saveTimeline;
+        else if (name == 'generateTimelineCode') return this.HTML.TimelineCreation.BTN.generateTimelineCode;
+        else if (name == 'addTimeline') return this.HTML.TimelineWatch.BTN.addTimeline;
+        else if (name == 'generateTimeline') return this.HTML.TimelineWatch.BTN.generateTimeline;
+        else if (name == 'copyCode') return this.HTML.TimelineCreation.BTN.copyCode;
         return false;
     }
 

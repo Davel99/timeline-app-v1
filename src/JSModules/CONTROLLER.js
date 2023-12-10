@@ -24,6 +24,13 @@ export default class CONTROLLER {
                 this.saveTimeline();
             });
         }
+        if (this.VIEW.checkBTN('copyCode')) {
+            this.VIEW.checkBTN('copyCode').addEventListener('click', () => {
+                let code = this.VIEW.getInput('timelineCode');
+                navigator.clipboard.writeText(code);
+                console.log('Código copiado '+ code);
+            });
+        }
         if (this.VIEW.checkBTN('generateTimelineCode')) {
             this.VIEW.checkBTN('generateTimelineCode').addEventListener('click', () => {
                 let code = this.VIEW.getInput('timelineModCode');
