@@ -15,26 +15,26 @@ export default class TimelineCreationTEMPLATE{
                 <div class="col-md-4 row">
                     <div class="col">
                         <label class="form-label">Día</label>
-                        <input type="text" class="form-control" id="day${eventCount}" placeholder="31">
+                        <input type="number" class="form-control input-number" id="day${eventCount}" placeholder="31">
                     </div>
                     <div class="col">
                         <label class="form-label">Mes</label>
-                        <input type="text" class="form-control" id="month${eventCount}" placeholder="12"
+                        <input type="number" class="form-control input-number" id="month${eventCount}" placeholder="12"
                             aria-label="Last name">
                     </div>
                     <div class="col">
                         <label class="form-label">Año</label>
-                        <input type="text" class="form-control" id="year${eventCount}" placeholder="1999"
+                        <input type="number" class="form-control" id="year${eventCount}" placeholder="1999"
                             aria-label="Last name">
                     </div>
                 </div>
                 <div class="col-md-2 row">
                     <label class="form-label">Hora y min</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="hour${eventCount}" placeholder="23"
+                        <input type="number" class="form-control" id="hour${eventCount}" placeholder="23"
                             aria-label="Username">
                         <span class="input-group-text">:</span>
-                        <input type="text" class="form-control" id="min${eventCount}" placeholder="59"
+                        <input type="number" class="form-control" id="min${eventCount}" placeholder="59"
                             aria-label="Server">
                     </div>
                 </div>

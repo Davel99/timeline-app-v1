@@ -17,6 +17,7 @@ export default class CONTROLLER {
         if (this.VIEW.checkBTN('addEvent')) {
             this.VIEW.checkBTN('addEvent').addEventListener('click', () => {
                 this.eventCount = this.VIEW.printNewEventForm(this.eventCount);
+                this.validateInputs();
             });
         }
         if (this.VIEW.checkBTN('saveTimeline')) {
@@ -28,7 +29,7 @@ export default class CONTROLLER {
             this.VIEW.checkBTN('copyCode').addEventListener('click', () => {
                 let code = this.VIEW.getInput('timelineCode');
                 navigator.clipboard.writeText(code);
-                console.log('Código copiado '+ code);
+                console.log('Código copiado ' + code);
             });
         }
         if (this.VIEW.checkBTN('generateTimelineCode')) {
@@ -59,6 +60,24 @@ export default class CONTROLLER {
                 this.handleWatch();
             })
         }
+
+        //GRAL EVENTS
+        this.validateInputs();
+    }
+
+    validateInputs() {
+        let inputNumbers = document.querySelectorAll('input[type="number"]');
+        inputNumbers.forEach(inputNum => {
+            inputNum.addEventListener('keypress', function (e) {
+                if (!(e.metaKey || // cmd/ctrl
+                    e.which <= 0 || // arrow keys
+                    e.which == 8 || // delete key
+                    /[0-9]/.test(String.fromCharCode(e.which))
+                )) {
+                    e.preventDefault();
+                }
+            });
+        })
     }
 
     saveTimeline() {
