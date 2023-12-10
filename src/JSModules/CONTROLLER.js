@@ -157,4 +157,8 @@ export default class CONTROLLER {
         if (a['min'] > b['min'])
             return 1;
     }
+    getNewCodeFromOldCode(oldCode){
+        let temp_timeline = new FictionalTimeline();
+        return temp_timeline.getNewCodeFromOldCode(oldCode);
+    }
 }

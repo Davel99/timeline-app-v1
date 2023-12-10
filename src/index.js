@@ -3,4 +3,4 @@ import CONTROLLER from './JSModules/CONTROLLER';
 import VIEW from './JSModules/VIEW';
 
 let view = new VIEW();
-new CONTROLLER(view);
+let controller = new CONTROLLER(view);
