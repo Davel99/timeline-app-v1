@@ -29,7 +29,6 @@ export default class CONTROLLER {
             this.VIEW.checkBTN('copyCode').addEventListener('click', () => {
                 let code = this.VIEW.getInput('timelineCode');
                 navigator.clipboard.writeText(code);
-                console.log('Código copiado ' + code);
             });
         }
         if (this.VIEW.checkBTN('generateTimelineCode')) {
