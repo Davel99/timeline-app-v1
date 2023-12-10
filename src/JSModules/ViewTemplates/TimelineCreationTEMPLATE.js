@@ -15,11 +15,11 @@ export default class TimelineCreationTEMPLATE{
                 <div class="col-md-4 row">
                     <div class="col">
                         <label class="form-label">Día</label>
-                        <input type="number" class="form-control input-number" id="day${eventCount}" placeholder="31">
+                        <input type="number" class="form-control" id="day${eventCount}" placeholder="31">
                     </div>
                     <div class="col">
                         <label class="form-label">Mes</label>
-                        <input type="number" class="form-control input-number" id="month${eventCount}" placeholder="12"
+                        <input type="number" class="form-control" id="month${eventCount}" placeholder="12"
                             aria-label="Last name">
                     </div>
                     <div class="col">
