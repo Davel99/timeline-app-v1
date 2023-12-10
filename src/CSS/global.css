@@ -5,9 +5,9 @@
     padding: 0;
 }
 
-$mainMinH: 85vh;
+$mainMinH: 55vh;
 $headerMinH: 5vh;
-$footerMinH: 10vh;
+$footerMinH: 20vh;
 
 $textBg: #c7c7c7;
 $numberSize: 50px;
