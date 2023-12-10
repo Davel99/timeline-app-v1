@@ -1,0 +1,54 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+$mainMinH: 85vh;
+$headerMinH: 5vh;
+$footerMinH: 10vh;
+
+$textBg: #c7c7c7;
+$numberSize: 50px;
+
+$appFontFamily: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+$appFontFamily_text: 'Arial Narrow Bold', sans-serif;
+$brandFSize: 2.5rem;
+
+$mColorH: #aed2fe;
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+header {
+    min-height: $headerMinH;
+}
+
+main {
+    min-height: $mainMinH;
+}
+
+footer {
+    min-height: $footerMinH;
+}
+.gral-icon-container {
+    font-size: 1.5rem;
+    padding: 1px;
+    text-align: center;
+
+    a {
+        text-decoration: none;
+        color: white;
+        transition: all 300ms;
+        padding-left: 10px;
+    }
+
+    a:hover {
+        font-size: 1.75rem;
+        color: $mColorH;
+    }
+}

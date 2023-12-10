@@ -1,3 +1,3 @@
-* {
-    box-sizing: border-box;
-}
+@import './CSS/global.css';
+@import './CSS/header.css';
+@import './CSS/app.css';

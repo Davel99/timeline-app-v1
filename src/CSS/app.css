@@ -1,0 +1,15 @@
+#tempus-app{
+    min-height: 300px;
+    min-width: 100%;
+    max-width: 500px;
+    padding: 5px;
+    background: $textBg;
+}
+
+.app_ff{
+    font-family: $appFontFamily;
+}
+
+.app_ff-text{
+    font-family: $appFontFamily_text;
+}
