@@ -97,7 +97,7 @@ export default class CONTROLLER {
         }
 
         this.TimelineCREATED.events = events;
-        this.VIEW.updateInput('timelineCode', this.TimelineCREATED.dataToString());
+        this.VIEW.updateInput('timelineCode', this.TimelineCREATED.getCode());
     }
 
     handleWatch() {
