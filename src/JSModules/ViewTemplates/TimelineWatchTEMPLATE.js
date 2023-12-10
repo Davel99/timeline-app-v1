@@ -2,38 +2,6 @@ export default class TimelineWatchTEMPLATE{
     constructor() {
     }
 
-    handleCreation(timelinesCount) {
-        let timelines = new Array(timelinesCount);
-        let allEventsCount = 0;
-        for (let i = 0; i < timelinesCount; i++) {
-            let fictionalTimeline = document.querySelector('#timeline' + i);
-            let code = fictionalTimeline.value;
-            timelines[i] = new FictionalTimeline(code);
-            allEventsCount += this.timelines[i].events.length;
-        }
-
-        console.log("All events count: " + allEventsCount);
-
-        let allEvents = new Array(this.allEventsCount);
-        let helper = 0;
-        for (let i = 0; i < timelinesCount; i++) {
-            for (let e = 0; e < this.timelines[i].events.length; e++) {
-                allEvents[helper] = timelines[i].events[e];
-                allEvents[helper].id = i;
-                helper++;
-            }
-        }
-        console.log(allEvents);
-        this.orderEvents();
-        this.printTimelineName();
-        this.printTimelineHeaders();
-
-        this.allEvents.forEach(event => {
-            console.log(event);
-            this.printEvents(event);
-        })
-    }
-
     getTimelineCodeArea(timelinesCount) {
         return `
         <div class="form-floating mb-3">

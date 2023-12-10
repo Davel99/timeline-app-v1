@@ -16,7 +16,6 @@ export default class FictionalTimeline {
 
     createFromCode(data) {
         let v = data.split(';');
-        console.log('Name detected is: ' + v[0]);
         this.name = v[0];
         this.subname = v[1];
         let events = v[2].split('/');
@@ -39,7 +38,7 @@ export default class FictionalTimeline {
     }
 
     setCode(code) {
-        this.publicCode = this.CRYPTO.AES.encrypt(JSON.stringify({ code }), this.secret).toString();
+        this.publicCode = this.CRYPTO.AES.encrypt(code, this.secret).toString();
     }
     getCode() {
         if (this.publicCode) {

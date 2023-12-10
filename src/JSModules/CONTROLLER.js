@@ -38,7 +38,6 @@ export default class CONTROLLER {
                     alert('Algo salió mal');
                 } else {
                     this.TimelineCREATED = new FictionalTimeline(code);
-                    console.log(this.TimelineCREATED);
                     let newCount = this.VIEW.updateFromValues(
                         this.TimelineCREATED.name,
                         this.TimelineCREATED.subname,
